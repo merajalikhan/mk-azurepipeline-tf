@@ -26,6 +26,7 @@ steps:
     backendAzureRmResourceGroupName: 'mk-space-game-rg'
     backendAzureRmStorageAccountName: 'mktseststorage'
     backendAzureRmContainerName: 'mkstestcontainer'
+    backendAzureRmKey: infrax.tfstate
 
   #inputs:
   #  provider: 'azurerm' 

@@ -24,8 +24,8 @@ steps:
     command: 'init'
     backendServiceArm: 'GERALEXGR'
     backendAzureRmResourceGroupName: 'mk-space-game-rg'
-   # backendAzureRmStorageAccountName: 'test'
-  #  backendAzureRmContainerName: 'test'
+    backendAzureRmStorageAccountName: 'mktseststorage'
+    backendAzureRmContainerName: 'mkstestcontainer'
 
   #inputs:
   #  provider: 'azurerm' 

@@ -27,7 +27,7 @@ steps:
     backendAzureRmResourceGroupName: 'mk-space-game-rg'
     backendAzureRmStorageAccountName: 'mktseststorage'
     backendAzureRmContainerName: 'mkstestcontainer'
-    backendAzureRmKey: 'terraform.state'
+    backendAzureRmKey: 'infrax.state'
 
 - task: TerraformTaskV4@4
   displayName: 'Terraform Validate'

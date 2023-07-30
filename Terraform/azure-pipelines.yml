@@ -8,7 +8,9 @@ pool:
 
 
 steps:
-- task: TerraformTaskV4@0
+# mk test
+##
+- task: TerraformTaskV4@4
   displayName: 'Install Terraform'
   inputs:
     terraformVersion: 'latest'
@@ -16,15 +18,24 @@ steps:
 - checkout: self
   displayName: 'Checkout repository'
 
-- task: TerraformTaskV4@0
+- task: TerraformTaskV4@4
   displayName: 'Terraform Init'
   inputs:
+    provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(Build.SourcesDirectory)'
-    backendType: 'azurerm'
-    ensureBackend: true
-    backendServiceArm: GERALEXGR
-    resourceGroupName: 'mk-space-game-rg'
+    backendServiceArm: 'GERALEXGR'
+    backendAzureRmResourceGroupName: 'mk-space-game-rg'
+    backendAzureRmStorageAccountName: 'test'
+    backendAzureRmContainerName: 'test'
+
+  #inputs:
+  #  provider: 'azurerm' 
+  #  command: 'init'
+  #  workingDirectory: '$(Build.SourcesDirectory)'
+  #  backendType: 'azurerm'
+  #  ensureBackend: true
+  #  backendServiceArm: GERALEXGR
+  #  resourceGroupName: 'mk-space-game-rg'
     #storageAccountName: '<storage_account_name>'
     #containerName: '<container_name>'
     #key: '<state_file_key>'

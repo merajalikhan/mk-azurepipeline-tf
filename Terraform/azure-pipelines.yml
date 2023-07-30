@@ -27,8 +27,13 @@ steps:
     backendAzureRmResourceGroupName: 'mk-space-game-rg'
     backendAzureRmStorageAccountName: 'mktseststorage'
     backendAzureRmContainerName: 'mkstestcontainer'
-    backendAzureRmKey: infrax.tfstate
+    backendAzureRmKey: 'infrax.state'
 
+- task: TerraformTaskV4@4
+  displayName: 'Terraform Validate'
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
   #inputs:
   #  provider: 'azurerm' 
   #  command: 'init'
@@ -45,16 +50,26 @@ steps:
   displayName: 'Terraform Validate'
   inputs:
     command: 'validate'
-    workingDirectory: '$(Build.SourcesDirectory)'
+    workingDirectory: 'Terraform'
 
-- task: TerraformTaskV3@3
-  displayName: 'Terraform Plan'
-  inputs:
-    command: 'plan'
-    workingDirectory: '$(Build.SourcesDirectory)'
-    environmentServiceNameAzureRM: 'GERALEXGR'
-    #environmentServiceName: 
-    commandOptions: '-out=tfplan'    
+## New plan
+#- task: TerraformTaskV4@4
+#  displayName: 'Terraform Plan...'
+#  inputs:
+#    provider: 'azurerm'
+#    command: 'plan'
+#    workingDirectory: 'Terraform'
+#    environmentServiceNameAzureRM: 'GERALEXGR'
+##
+
+#- task: TerraformTaskV3@3
+#  displayName: 'Terraform Plan'
+#  inputs:
+#    command: 'plan'
+#    workingDirectory: '$(Build.SourcesDirectory)'
+#    environmentServiceNameAzureRM: 'GERALEXGR'
+#    #environmentServiceName: 
+#    commandOptions: '-out=tfplan'    
 
 #- task: TerraformTaskV3@3
 #  displayName: 'Terraform Apply'

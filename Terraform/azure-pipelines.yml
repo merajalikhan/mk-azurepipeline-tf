@@ -53,6 +53,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/Terraform'
     environmentServiceNameAzureRM: 'GERALEXGR'
 ##
 

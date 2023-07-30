@@ -39,9 +39,9 @@ steps:
     workingDirectory: 'Terraform'
     environmentServiceNameAzureRM: 'GERALEXGR'
 - task: TerraformTaskV4@4
-  displayName: 'Terraform Apply' 
+  displayName: 'Terraform Destroy' 
   inputs:
     provider: 'azurerm'
-    command: 'apply'
+    command: 'destroy'
     workingDirectory: 'Terraform'
     environmentServiceNameAzureRM: 'GERALEXGR'

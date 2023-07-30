@@ -21,6 +21,18 @@ steps:
   displayName: 'Install terraform'
   inputs:
     terraformVersion: 'latest'
-  
-
-
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: 'Terraform'
+    backendServiceArm: 'GERALEXGR'
+    backendAzureRmResourceGroupName: 'mk-space-game-rg'
+    backendAzureRmStorageAccountName: 'mktseststorage'
+    backendAzureRmContainerName: 'mkstestcontainer'
+    backendAzureRmKey: 'infrax.tfstate'
+- task: TerraformTaskV4@4
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+    workingDirectory: 'Terraform'

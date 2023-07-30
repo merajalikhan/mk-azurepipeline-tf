@@ -29,6 +29,11 @@ steps:
     backendAzureRmContainerName: 'mkstestcontainer'
     backendAzureRmKey: 'terraform.state'
 
+- task: TerraformTaskV4@4
+  displayName: 'Terraform Validate'
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
   #inputs:
   #  provider: 'azurerm' 
   #  command: 'init'
@@ -41,11 +46,11 @@ steps:
     #containerName: '<container_name>'
     #key: '<state_file_key>'
 
-- task: TerraformTaskV3@3
-  displayName: 'Terraform Validate'
-  inputs:
-    command: 'validate'
-    workingDirectory: '$(Build.SourcesDirectory)'
+#- task: TerraformTaskV3@3
+#  displayName: 'Terraform Validate'
+#  inputs:
+#    command: 'validate'
+#    workingDirectory: '$(Build.SourcesDirectory)'
 
 ## New plan
 - task: TerraformTaskV4@4

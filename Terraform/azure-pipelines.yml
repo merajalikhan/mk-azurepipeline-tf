@@ -51,8 +51,9 @@ steps:
   inputs:
     command: 'plan'
     workingDirectory: '$(Build.SourcesDirectory)'
-    environmentServiceName: 'GERALEXGR'
-    commandOptions: '-out=tfplan'
+    environmentServiceNameAzureRM: 'GERALEXGR'
+    #environmentServiceName: 
+    commandOptions: '-out=tfplan'    
 
 #- task: TerraformTaskV3@3
 #  displayName: 'Terraform Apply'

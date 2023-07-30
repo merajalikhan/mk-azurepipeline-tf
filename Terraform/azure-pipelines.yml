@@ -23,11 +23,11 @@ steps:
     workingDirectory: '$(Build.SourcesDirectory)'
     backendType: 'azurerm'
     ensureBackend: true
-    backendServiceArm: 'GERALEXGR'
+    backendServiceArm: GERALEXGR
     resourceGroupName: 'mk-space-game-rg'
-    storageAccountName: '<storage_account_name>'
-    containerName: '<container_name>'
-    key: '<state_file_key>'
+    #storageAccountName: '<storage_account_name>'
+    #containerName: '<container_name>'
+    #key: '<state_file_key>'
 
 - task: TerraformTaskV3@3
   displayName: 'Terraform Validate'

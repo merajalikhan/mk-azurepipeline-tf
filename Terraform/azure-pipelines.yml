@@ -46,20 +46,20 @@ steps:
     #containerName: '<container_name>'
     #key: '<state_file_key>'
 
-#- task: TerraformTaskV3@3
-#  displayName: 'Terraform Validate'
-#  inputs:
-#    command: 'validate'
-#    workingDirectory: '$(Build.SourcesDirectory)'
+- task: TerraformTaskV3@3
+  displayName: 'Terraform Validate'
+  inputs:
+    command: 'validate'
+    workingDirectory: 'Terraform'
 
 ## New plan
-- task: TerraformTaskV4@4
-  displayName: 'Terraform Plan...'
-  inputs:
-    provider: 'azurerm'
-    command: 'plan'
-    workingDirectory: 'Terraform'
-    environmentServiceNameAzureRM: 'GERALEXGR'
+#- task: TerraformTaskV4@4
+#  displayName: 'Terraform Plan...'
+#  inputs:
+#    provider: 'azurerm'
+#    command: 'plan'
+#    workingDirectory: 'Terraform'
+#    environmentServiceNameAzureRM: 'GERALEXGR'
 ##
 
 #- task: TerraformTaskV3@3

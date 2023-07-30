@@ -1,0 +1,54 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+- task: TerraformInstaller@1
+  displayName: 'Install terraform'
+  inputs:
+    terraformVersion: 'latest'
+- task: TerraformTaskV4@4
+  displayName: 'Terraform Init' 
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: 'Terraform'
+    backendServiceArm: 'GERALEXGR'
+    backendAzureRmResourceGroupName: 'mk-space-game-rg'
+    backendAzureRmStorageAccountName: 'mktseststorage'
+    backendAzureRmContainerName: 'mkstestcontainer'
+    backendAzureRmKey: 'infrax.tfstate'
+- task: TerraformTaskV4@4
+  displayName: 'Terraform Validate' 
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+    workingDirectory: 'Terraform'
+- task: TerraformTaskV4@4
+  displayName: 'Terraform Plan'  
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: 'Terraform'
+    environmentServiceNameAzureRM: 'GERALEXGR'
+- task: TerraformTaskV4@4
+  displayName: 'Terraform Apply' 
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    workingDirectory: 'Terraform'
+    environmentServiceNameAzureRM: 'GERALEXGR'

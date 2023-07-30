@@ -9,11 +9,10 @@ pool:
 
 steps:
 # mk test
-##
-- task: TerraformTaskV4@4
-  displayName: 'Install Terraform'
+- task: TerraformInstaller@1
   inputs:
     terraformVersion: 'latest'
+##
 
 - checkout: self
   displayName: 'Checkout repository'
@@ -25,8 +24,8 @@ steps:
     command: 'init'
     backendServiceArm: 'GERALEXGR'
     backendAzureRmResourceGroupName: 'mk-space-game-rg'
-    backendAzureRmStorageAccountName: 'test'
-    backendAzureRmContainerName: 'test'
+   # backendAzureRmStorageAccountName: 'test'
+  #  backendAzureRmContainerName: 'test'
 
   #inputs:
   #  provider: 'azurerm' 
@@ -46,18 +45,18 @@ steps:
     command: 'validate'
     workingDirectory: '$(Build.SourcesDirectory)'
 
-- task: TerraformTaskV3@3
-  displayName: 'Terraform Validate'
-  inputs:
-    command: 'plan'
-    workingDirectory: '$(Build.SourcesDirectory)'
-    environmentServiceName: 'GERALEXGR'
-    commandOptions: '-out=tfplan'
+#- task: TerraformTaskV3@3
+#  displayName: 'Terraform Validate'
+#  inputs:
+#    command: 'plan'
+#    workingDirectory: '$(Build.SourcesDirectory)'
+#    environmentServiceName: 'GERALEXGR'
+#    commandOptions: '-out=tfplan'
 
-- task: TerraformTaskV3@3
-  displayName: 'Terraform Apply'
-  inputs:
-    command: 'apply'
-    workingDirectory: '$(Build.SourcesDirectory)'
-    environmentServiceName: 'GERALEXGR'
-    commandOptions: '-auto-approve -input=false tfplan'
+#- task: TerraformTaskV3@3
+#  displayName: 'Terraform Apply'
+#  inputs:
+#    command: 'apply'
+#    workingDirectory: '$(Build.SourcesDirectory)'
+#    environmentServiceName: 'GERALEXGR'
+#    commandOptions: '-auto-approve -input=false tfplan'

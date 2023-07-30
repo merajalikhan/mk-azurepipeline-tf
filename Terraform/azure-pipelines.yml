@@ -16,7 +16,7 @@ steps:
 - checkout: self
   displayName: 'Checkout repository'
 
-- task: TerraformTaskV4@1
+- task: TerraformTaskV4@0
   displayName: 'Terraform Init'
   inputs:
     command: 'init'

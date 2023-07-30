@@ -58,7 +58,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    workingDirectory: '$(Build.SourcesDirectory)'
+    workingDirectory: 'Terraform'
     environmentServiceNameAzureRM: 'GERALEXGR'
 ##
 

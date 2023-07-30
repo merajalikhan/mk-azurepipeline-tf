@@ -3,10 +3,7 @@ terraform {
         azurerm = {
         source = "hashicorp/azurerm"
         version = "=3.0.0"
-    }
-
-  
-    
+    }    
   }
    backend "azurerm" {
     resource_group_name  = "mk-space-game-rg"
@@ -17,9 +14,9 @@ terraform {
 }
 
 provider "azurerm" {
-  features {
-    skip_provider_registration = true
+  features {    
   }
+  skip_provider_registration = true
 }
 
 resource "azurerm_resource_group" "example" {

@@ -38,3 +38,10 @@ steps:
     provider: 'azurerm'
     command: 'validate'
     workingDirectory: 'Terraform'
+- task: TerraformTaskV4@4
+  displayName: 'Terraform Plan'  
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: 'Terraform'
+    environmentServiceNameAzureRM: 'GERALEXGR'

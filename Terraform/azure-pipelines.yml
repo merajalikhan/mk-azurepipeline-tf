@@ -1,0 +1,52 @@
+trigger:
+  branches:
+    include:
+    - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+
+steps:
+- task: TerraformTaskV4@0
+  displayName: 'Install Terraform'
+  inputs:
+    terraformVersion: 'latest'
+
+- checkout: self
+  displayName: 'Checkout repository'
+
+- task: TerraformTaskV4@1
+  displayName: 'Terraform Init'
+  inputs:
+    command: 'init'
+    workingDirectory: '$(Build.SourcesDirectory)'
+    backendType: 'azurerm'
+    ensureBackend: true
+    backendServiceArm: 'GERALEXGR'
+    resourceGroupName: 'mk-space-game-rg'
+   # storageAccountName: '<storage_account_name>'
+   # containerName: '<container_name>'
+   # key: '<state_file_key>'
+
+- task: TerraformTaskV3@3
+  displayName: 'Terraform Validate'
+  inputs:
+    command: 'validate'
+    workingDirectory: '$(Build.SourcesDirectory)'
+
+- task: TerraformTaskV3@3
+  displayName: 'Terraform Validate'
+  inputs:
+    command: 'plan'
+    workingDirectory: '$(Build.SourcesDirectory)'
+    environmentServiceName: 'GERALEXGR'
+    commandOptions: '-out=tfplan'
+
+- task: TerraformTaskV3@3
+  displayName: 'Terraform Apply'
+  inputs:
+    command: 'apply'
+    workingDirectory: '$(Build.SourcesDirectory)'
+    environmentServiceName: 'GERALEXGR'
+    commandOptions: '-auto-approve -input=false tfplan'

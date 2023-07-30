@@ -47,14 +47,22 @@ steps:
     command: 'validate'
     workingDirectory: '$(Build.SourcesDirectory)'
 
-- task: TerraformTaskV3@3
-  displayName: 'Terraform Plan'
+## New plan
+- task: TerraformTaskV4@4
   inputs:
+    provider: 'azurerm'
     command: 'plan'
-    workingDirectory: '$(Build.SourcesDirectory)'
     environmentServiceNameAzureRM: 'GERALEXGR'
-    #environmentServiceName: 
-    commandOptions: '-out=tfplan'    
+##
+
+#- task: TerraformTaskV3@3
+#  displayName: 'Terraform Plan'
+#  inputs:
+#    command: 'plan'
+#    workingDirectory: '$(Build.SourcesDirectory)'
+#    environmentServiceNameAzureRM: 'GERALEXGR'
+#    #environmentServiceName: 
+#    commandOptions: '-out=tfplan'    
 
 #- task: TerraformTaskV3@3
 #  displayName: 'Terraform Apply'

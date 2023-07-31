@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 trigger:
-- none
+- main
 
 pool:
   vmImage: ubuntu-latest
@@ -39,9 +39,9 @@ steps:
     workingDirectory: 'Terraform'
     environmentServiceNameAzureRM: 'GERALEXGR'
 - task: TerraformTaskV4@4
-  displayName: 'Terraform Destroy' 
+  displayName: 'Terraform Apply' 
   inputs:
     provider: 'azurerm'
-    command: 'destroy'
+    command: 'apply'
     workingDirectory: 'Terraform'
     environmentServiceNameAzureRM: 'GERALEXGR'

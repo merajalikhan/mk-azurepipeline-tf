@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
+- none
 
 pool:
   vmImage: ubuntu-latest
@@ -19,10 +19,10 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: 'Terraform'
+    workingDirectory: 'Terraform_Agent'
     backendServiceArm: 'GERALEXGR'
     backendAzureRmResourceGroupName: 'mk-space-game-rg'
-    backendAzureRmStorageAccountName: 'mktseststorage'
+    backendAzureRmStorageAccountName: 'mksagentstorage'
     backendAzureRmContainerName: 'mkstestcontainer'
     backendAzureRmKey: 'infrax.tfstate'
 - task: TerraformTaskV4@4
@@ -30,18 +30,18 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'validate'
-    workingDirectory: 'Terraform'
+    workingDirectory: 'Terraform_Agent'
 - task: TerraformTaskV4@4
   displayName: 'Terraform Plan'  
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    workingDirectory: 'Terraform'
+    workingDirectory: 'Terraform_Agent'
     environmentServiceNameAzureRM: 'GERALEXGR'
 - task: TerraformTaskV4@4
   displayName: 'Terraform Apply' 
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    workingDirectory: 'Terraform'
+    workingDirectory: 'Terraform_Agent'
     environmentServiceNameAzureRM: 'GERALEXGR'

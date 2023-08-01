@@ -14,7 +14,7 @@ variable "location" {
 variable "url" {
   type = string
   description = "Specify the Azure DevOps url e.g. https://dev.azure.com/mmelcher"
-  default = "https://dev.azure.com/merajakhan"
+  default = ""
 }
 
 #Create via https://dev.azure.com/[Organization]/_usersSettings/tokens
@@ -41,7 +41,7 @@ variable "agent" {
 variable "sshkey" {
   type    = string
   description = "Provide a ssh public key to logon to the VM"
-  default = "ssh-rsa AAAAB3NzaC1yc2EAAAA ..."
+  default = ""
 }
 
 variable "size" {

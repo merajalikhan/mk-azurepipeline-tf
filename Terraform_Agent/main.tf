@@ -138,7 +138,7 @@ resource "azurerm_virtual_machine_extension" "azuredevopsvmex" {
   {
   "fileUris": ["https://gist.githubusercontent.com/MaxMelcher/bfe95eb55b33fa7b9bdbf68c9ac51811/raw/b42e685c6728e043d041e16c330c535a52bcf2ea/devops.sh"],
   "commandToExecute": "bash devops.sh '${var.url}' '${var.pat}' '${var.pool}' '${var.agent}'",
-  "timestamp" : "11"
+  "timestamp" : "123456789"
   }
 SETTINGS
 

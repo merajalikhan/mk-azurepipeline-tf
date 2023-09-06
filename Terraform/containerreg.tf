@@ -4,3 +4,4 @@ resource "azurerm_container_registry" "acr" {
   location            =  "UK South" 
   sku                 =  "Standard"
   admin_enabled       =  false
+}
